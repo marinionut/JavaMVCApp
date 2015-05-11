@@ -144,14 +144,14 @@ public class MyDispatcherServlet extends HttpServlet {
                 Class[] paramTypes = new Class[numberOfParams];
                 int i = 0;
                 for (Class c : methodAttributes.getMethodTypes()) {
-                    paramTypes[i++] = c;
+                        paramTypes[i++] = c;
                 }
                 Method m = instanceControllerClass.getClass().getDeclaredMethod(methodAttributes.getMethodName(), paramTypes);
-                List<Integer> paramList = new ArrayList<>();
+                List<String> paramList = new ArrayList<>();
                 for (String s : methodAttributes.getMethodParams()) {
-                    paramList.add(Integer.valueOf(req.getParameter(s)));
+                    paramList.add(req.getParameter(s));
                 }
-                Object r = m.invoke(instanceControllerClass, paramList);
+                Object r = m.invoke(instanceControllerClass, (String[]) paramList.toArray(new String[0]));
                 return r;
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();

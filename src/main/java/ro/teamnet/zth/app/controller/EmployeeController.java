@@ -39,7 +39,7 @@ public class EmployeeController {
     }
 
     @MyRequestMethod(urlPath = "/one")
-    public Employee getOneEmployee(@MyRequestParameters(paramName = "idEmployee", paramType = Integer.class)Integer idEmployee) {
+    public Employee getOneEmployee(@MyRequestParameters(paramName = "idEmployee", paramType = String.class)String idEmployee) {
 
         /*Employee e = new Employee();
         e.setId(10);
@@ -48,6 +48,6 @@ public class EmployeeController {
         return e;*/
 
         EmployeeService employeeService = new EmployeeServiceImpl();
-        return employeeService.findOneEmployee(idEmployee);
+        return employeeService.findOneEmployee(Integer.parseInt(idEmployee));
     }
 }

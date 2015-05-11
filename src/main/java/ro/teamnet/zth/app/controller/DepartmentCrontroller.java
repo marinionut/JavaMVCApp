@@ -15,6 +15,7 @@ public class DepartmentCrontroller {
 
     @MyRequestMethod(urlPath = "/all")
     public List<Department> getAllDepartment() {
+
         List<Department> departments = new ArrayList<>();
         Department d1 = new Department();
         d1.setId(13);
@@ -29,6 +30,7 @@ public class DepartmentCrontroller {
         departments.add(d2);
 
         return departments;
+
     }
 
     @MyRequestMethod(urlPath = "/one")
